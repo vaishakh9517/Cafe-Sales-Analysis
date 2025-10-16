@@ -1,0 +1,53 @@
+create table cafe
+(
+ID text(20),
+Item text(20),
+Quantity int,
+PPU float,
+Total float,
+Payment text(20),
+Location text(20),
+Date date
+);
+
+load data infile 'D:/Data Analytics Documents - Manorama Horizon/Self Study/Cafe/dirty_cafe_sales.csv'
+into table cafe
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+select * from cafe wher ID is null;
+
+select count(*) from cafe where payment = '';
+
+update cafe set total = 
+(
+select round(avg(total), 2)
+from cafe
+where total is not null and total <> ''
+)
+where total is null or total = '';
+
+update cafe set payment = 'unknown' where payment is null or payment = '';
+
+SELECT count(*) 
+FROM cafe
+WHERE item <> TRIM(item);
+
+select * from cafe 
+into outfile 'D:/Data Analytics Documents - Manorama Horizon/Self Study/Cafe/Cleaned_Data.csv'
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n';
+
+SELECT 'Transaction ID', 'Item', 'Quantity', 'Price Per Unit', 'Total Spent', 'Payment Method', 'Location', 'Transaction Date'
+UNION 
+SELECT * from cafe
+INTO OUTFILE 'D:/Data Analytics Documents - Manorama Horizon/Self Study/Cafe/Cleaned_Data2.csv'
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n';
+
+'ID', 'Item', 'Quantity', 'PPU', 'Total', 'Payment', 'Location', 'Date'
+'Transaction ID', 'Item', 'Quantity', 'Price Per Unit', 'Total Spent', 'Payment Method', 'Location', 'Transaction Date'
