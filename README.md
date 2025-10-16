@@ -97,7 +97,7 @@ Implementing these data-driven strategies will help boost overall efficiency and
 ## 🙋‍♂️ About Me
 
 **Vaishakh K**  
-Aspiring Data Analyst | Excel | MySQL | Python | | Tableau | Power BI 
+Aspiring Data Analyst | Excel | MySQL | Python | Tableau | Power BI 
 [LinkedIn](https://www.linkedin.com/in/vaishakh-k-0b2bb8202/) • [Portfolio](https://github.com/vaishakh9517)
 
 
